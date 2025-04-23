@@ -238,3 +238,37 @@ function formatArrayMap(input) {
 }
 
 formatArrayMap(input);
+
+/*
+The time complexity of this solution is O(n log n), where n is the number of entries in the input array. Let me break down why:
+
+Initial loop through the input data: O(n)
+
+We iterate through each item in the input array once
+Map operations (get, set) are generally O(1)
+Adding students to arrays is also O(1)
+
+
+Sorting operations:
+
+Sorting sessions by session_id: O(s log s) where s is the number of unique sessions
+Sorting classes within each session: O(c log c) where c is the number of classes per session
+Sorting students within each class: O(t log t) where t is the number of students per class
+
+
+
+The sorting operations dominate the complexity, particularly sorting students. In the worst case, if all students belong to the same session and class, we would have:
+
+1 session (s = 1)
+1 class (c = 1)
+n students (t = n)
+
+So the worst-case sorting would be O(n log n) for the students.
+The space complexity is O(n) because:
+
+We store all the input data in our maps and arrays
+We don't duplicate data significantly, just reorganize it
+The output data structure has roughly the same number of elements as the input
+
+This solution is efficient as it uses hash maps (JavaScript Maps) to group the data, which minimizes the need for nested loops when organizing the sessions, classes, and students.
+*/
